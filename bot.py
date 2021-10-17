@@ -56,4 +56,4 @@ async def on_message(ctx):
         await ctx.channel.send(f"{ctx.author.mention}\n您的社会信用有{q}分\n请您在Discord群内继续赞扬中国共产党以增加您的社会信用分")
 
 if __name__ == "__main__":
-    client.run("ODkyNDMyMTg5NzcyNDA2ODg0.YVM0Pg.dx9Gp7XC-jybNlxabBclm8k1HQc")
+    client.run("token")
