@@ -6,4 +6,3 @@
 <p>./install.sh</p>
 <p>Command:</p>
 <p>>pt [check your social credit]</p>
-<p>Command:</p>
