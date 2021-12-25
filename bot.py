@@ -7,6 +7,11 @@ from os import getenv
 conn = sqlite3.connect("64.sqlite3")
 cursor = conn.cursor()
 
+try:
+    cursor.execute(f"select * from `we_miss_them` where rowid = 1").fetchone()[1]
+except:
+    cursor.execute("CREATE TABLE we_miss_them (id TEXT NOT NULL,sc INT NOT NULL);")
+
 client = commands.Bot(command_prefix=">")
 
 def check(txt):
