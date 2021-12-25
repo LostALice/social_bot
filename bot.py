@@ -2,6 +2,7 @@
 
 from discord.ext import commands
 import discord,sqlite3,random
+from os import getenv
 
 conn = sqlite3.connect("64.sqlite3")
 cursor = conn.cursor()
@@ -53,9 +54,8 @@ async def on_ready():
 @client.event
 async def on_message(ctx):
     txt = ctx.content.split(" ")
-    print(f"{ctx.author} {ctx.author.id}:{ctx.content}",flush=True)
-
-    if ctx.author != client.user and id_(ctx.author.id):
+    print(f"{ctx.author} {ctx.author.id}:{ctx.content}\tIs bot:{ctx.author.bot}",flush=True)
+    if ctx.author != client.user and id_(ctx.author.id) and not ctx.author.bot:
         if ctx.content == ">pt" or ctx.content == "我的社会信用" or ctx.content == "我的社會信用":
             q = cursor.execute(f"select id,sc from `we_miss_them` where id = '{ctx.author}'").fetchone()[1]
             await ctx.channel.send(f"{ctx.author.mention}\n您的社会信用有{q}分\n请您在Discord群内继续赞扬中国共产党以增加您的社会信用分")
@@ -99,6 +99,4 @@ async def on_message(ctx):
             except:
                 pass
 if __name__ == "__main__":
-    token = ""
-    print(token)
-    client.run(token)
+    client.run(getenv("token"))
